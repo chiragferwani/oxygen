@@ -32,7 +32,7 @@ from functools import lru_cache
 # CONFIG
 # -------------------------
 # Logo path (from conversation)
-LOGO_PATH = "/home/chirag/Code/oxygen/oxygen-logo.png"
+LOGO_PATH = "https://oxygenai.vercel.app/assets/logo-white-BnXjc4Zw.png"
 
 # UI strings
 PROJECT_NAME = "Project Oxygen"
