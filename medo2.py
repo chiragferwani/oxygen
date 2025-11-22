@@ -34,7 +34,7 @@ import io
 # CONFIG
 # -------------------------
 # Logo path (from conversation)
-LOGO_PATH = "https://oxygenai.vercel.app/assets/logo-white-BnXjc4Zw.png"
+LOGO_PATH = "https://oxygenai.vercel.app/assets/logo-text-white-B3XghXWf.png"
 
 # UI strings
 PROJECT_NAME = "Project Oxygen"
@@ -147,7 +147,7 @@ else:
     )
 
 # Top hero layout
-col1, col2 = st.columns([1, 2])
+col1, col2 = st.columns([1.5, 5])
 
 with col1:
     # show logo if exists
@@ -158,7 +158,7 @@ with col1:
             logo_img = Image.open(io.BytesIO(response.content))
         else:
             logo_img = Image.open(LOGO_PATH)
-        st.image(logo_img, width=160)
+        st.image(logo_img, width=220)
     except Exception as e:
         st.write(f"")  # nothing if missing
 
