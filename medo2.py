@@ -27,12 +27,14 @@ from typing import Dict, Any
 import streamlit as st
 from PIL import Image
 from functools import lru_cache
+import requests
+import io
 
 # -------------------------
 # CONFIG
 # -------------------------
 # Logo path (from conversation)
-LOGO_PATH = "oxygen-logo.png"
+LOGO_PATH = "https://oxygenai.vercel.app/assets/logo-white-BnXjc4Zw.png"
 
 # UI strings
 PROJECT_NAME = "Project Oxygen"
@@ -150,10 +152,15 @@ col1, col2 = st.columns([1, 2])
 with col1:
     # show logo if exists
     try:
-        logo_img = Image.open(LOGO_PATH)
+        if LOGO_PATH.startswith("http"):
+            response = requests.get(LOGO_PATH)
+            response.raise_for_status()
+            logo_img = Image.open(io.BytesIO(response.content))
+        else:
+            logo_img = Image.open(LOGO_PATH)
         st.image(logo_img, width=160)
-    except Exception:
-        st.write("")  # nothing if missing
+    except Exception as e:
+        st.write(f"")  # nothing if missing
 
 with col2:
     st.title(APP_TITLE)
